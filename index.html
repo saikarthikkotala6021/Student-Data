@@ -2,28 +2,22 @@
 <html>
 <head>
     <title>Student Count by Country</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Student Count by Country</h1>
     <table id="studentTable">
         <thead>
-            <tr>
-                <th>Country</th>
-                <th>Student Count</th>
-            </tr>
+            <tr><th>Country</th><th>Student Count</th></tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
     </table>
     <script>
         async function fetchStudentData() {
-            const response = await fetch('https://student1.azurewebsites.net/api/Student1'); // Replace with your API endpoint
+            const response = await fetch('/api/GetStudentCount');
             const data = await response.json();
             const tableBody = document.querySelector('#studentTable tbody');
             tableBody.innerHTML = data.map(row =>
-                `<tr><td>${row.Country}</td><td>${row.StudentCount}</td></tr>`
-            ).join('');
+                `<tr><td>${row.Country}</td><td>${row.StudentCount}</td></tr>`).join('');
         }
         fetchStudentData();
     </script>
